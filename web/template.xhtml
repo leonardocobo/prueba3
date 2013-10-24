@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+    <h:body>
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <h1 align="center">
+                    <ui:insert name="title">Default Title</ui:insert>
+                </h1>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" visible="true" size="60" closable="true" collapsible="false">
+                <p align="center">Prueba2 - Todos los Derechos Reservados</p>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" closable="true" size="200" collapsible="true">
+                <h:form>
+                    <p:menu>
+                        <p:submenu label="#{sessionController.loggedUser}" rendered="#{loginBean.comprador}">
+                           <p:menuitem value="Consulta Vehiculo" outcome="/comprador/List"/>
+                           <p:menuitem value="Salir" action="#{loginBean.logout}"/>
+                        </p:submenu>
+                        <p:submenu label="#{sessionController.loggedUser}" rendered="#{loginBean.vendedor}">
+                           <p:menuitem value="Registrar Vehiculo" outcome="/vendedor/Create"/>
+                           <p:menuitem value="Salir" action="#{loginBean.logout}"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body">Default Body</ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+
+        <p>
+
+        </p>
+    </h:body>
+
+</html>

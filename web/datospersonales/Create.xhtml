@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDatospersonalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datid}" for="datid" />
+                    <h:inputText id="datid" value="#{datospersonalesController.selected.datid}" title="#{bundle.CreateDatospersonalesTitle_datid}" required="true" requiredMessage="#{bundle.CreateDatospersonalesRequiredMessage_datid}"/>
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datnombre}" for="datnombre" />
+                    <h:inputText id="datnombre" value="#{datospersonalesController.selected.datnombre}" title="#{bundle.CreateDatospersonalesTitle_datnombre}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datapellido}" for="datapellido" />
+                    <h:inputText id="datapellido" value="#{datospersonalesController.selected.datapellido}" title="#{bundle.CreateDatospersonalesTitle_datapellido}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datipoid}" for="datipoid" />
+                    <h:inputText id="datipoid" value="#{datospersonalesController.selected.datipoid}" title="#{bundle.CreateDatospersonalesTitle_datipoid}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datnumeroid}" for="datnumeroid" />
+                    <h:inputText id="datnumeroid" value="#{datospersonalesController.selected.datnumeroid}" title="#{bundle.CreateDatospersonalesTitle_datnumeroid}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datelefono}" for="datelefono" />
+                    <h:inputText id="datelefono" value="#{datospersonalesController.selected.datelefono}" title="#{bundle.CreateDatospersonalesTitle_datelefono}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_datcorreo}" for="datcorreo" />
+                    <h:inputText id="datcorreo" value="#{datospersonalesController.selected.datcorreo}" title="#{bundle.CreateDatospersonalesTitle_datcorreo}" />
+                    <h:outputLabel value="#{bundle.CreateDatospersonalesLabel_usuid}" for="usuid" />
+                    <h:selectOneMenu id="usuid" value="#{datospersonalesController.selected.usuid}" title="#{bundle.CreateDatospersonalesTitle_usuid}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{datospersonalesController.create}" value="#{bundle.CreateDatospersonalesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{datospersonalesController.prepareList}" value="#{bundle.CreateDatospersonalesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDatospersonalesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

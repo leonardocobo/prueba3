@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVehiculoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_vehplaca}" for="vehplaca" />
+                    <h:inputText id="vehplaca" value="#{vehiculoController.selected.vehplaca}" title="#{bundle.CreateVehiculoTitle_vehplaca}" required="true" requiredMessage="#{bundle.CreateVehiculoRequiredMessage_vehplaca}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_vehmodelo}" for="vehmodelo" />
+                    <h:inputText id="vehmodelo" value="#{vehiculoController.selected.vehmodelo}" title="#{bundle.CreateVehiculoTitle_vehmodelo}" />
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_vehmarca}" for="vehmarca" />
+                    <h:inputText id="vehmarca" value="#{vehiculoController.selected.vehmarca}" title="#{bundle.CreateVehiculoTitle_vehmarca}" />
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_vehestado}" for="vehestado" />
+                    <h:inputText id="vehestado" value="#{vehiculoController.selected.vehestado}" title="#{bundle.CreateVehiculoTitle_vehestado}" />
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_vehprecio}" for="vehprecio" />
+                    <h:inputText id="vehprecio" value="#{vehiculoController.selected.vehprecio}" title="#{bundle.CreateVehiculoTitle_vehprecio}" />
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_catid}" for="catid" />
+                    <h:selectOneMenu id="catid" value="#{vehiculoController.selected.catid}" title="#{bundle.CreateVehiculoTitle_catid}" >
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVehiculoLabel_datid}" for="datid" />
+                    <h:selectOneMenu id="datid" value="#{vehiculoController.selected.datid}" title="#{bundle.CreateVehiculoTitle_datid}" >
+                        <f:selectItems value="#{datospersonalesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vehiculoController.create}" value="#{bundle.CreateVehiculoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vehiculoController.prepareList}" value="#{bundle.CreateVehiculoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVehiculoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

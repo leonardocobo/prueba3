@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDatospersonalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDatospersonalesEmpty}" rendered="#{datospersonalesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{datospersonalesController.items.rowCount > 0}">
+                    <h:outputText value="#{datospersonalesController.pagination.pageFirstItem + 1}..#{datospersonalesController.pagination.pageLastItem + 1}/#{datospersonalesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{datospersonalesController.previous}" value="#{bundle.Previous} #{datospersonalesController.pagination.pageSize}" rendered="#{datospersonalesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{datospersonalesController.next}" value="#{bundle.Next} #{datospersonalesController.pagination.pageSize}" rendered="#{datospersonalesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{datospersonalesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datnombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datnombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datapellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datapellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datipoid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datipoid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datnumeroid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datnumeroid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datelefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datelefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_datcorreo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datcorreo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDatospersonalesTitle_usuid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{datospersonalesController.prepareView}" value="#{bundle.ListDatospersonalesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{datospersonalesController.prepareEdit}" value="#{bundle.ListDatospersonalesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{datospersonalesController.destroy}" value="#{bundle.ListDatospersonalesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{datospersonalesController.prepareCreate}" value="#{bundle.ListDatospersonalesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDatospersonalesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

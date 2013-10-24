@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDatospersonalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datid}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datid}" title="#{bundle.ViewDatospersonalesTitle_datid}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datnombre}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datnombre}" title="#{bundle.ViewDatospersonalesTitle_datnombre}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datapellido}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datapellido}" title="#{bundle.ViewDatospersonalesTitle_datapellido}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datipoid}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datipoid}" title="#{bundle.ViewDatospersonalesTitle_datipoid}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datnumeroid}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datnumeroid}" title="#{bundle.ViewDatospersonalesTitle_datnumeroid}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datelefono}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datelefono}" title="#{bundle.ViewDatospersonalesTitle_datelefono}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_datcorreo}"/>
+                    <h:outputText value="#{datospersonalesController.selected.datcorreo}" title="#{bundle.ViewDatospersonalesTitle_datcorreo}"/>
+                    <h:outputText value="#{bundle.ViewDatospersonalesLabel_usuid}"/>
+                    <h:outputText value="#{datospersonalesController.selected.usuid}" title="#{bundle.ViewDatospersonalesTitle_usuid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{datospersonalesController.destroyAndView}" value="#{bundle.ViewDatospersonalesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDatospersonalesEditLink}"/>
+                <br />
+                <h:commandLink action="#{datospersonalesController.prepareCreate}" value="#{bundle.ViewDatospersonalesCreateLink}" />
+                <br />
+                <h:commandLink action="#{datospersonalesController.prepareList}" value="#{bundle.ViewDatospersonalesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDatospersonalesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
